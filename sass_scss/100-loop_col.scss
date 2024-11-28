@@ -1,0 +1,6 @@
+/* Generate column width classes from 1 to 4 */
+@for $i from 1 through 4 {
+	.col-#{$i} {
+		width: calc(100% / #{$i});
+	}
+}

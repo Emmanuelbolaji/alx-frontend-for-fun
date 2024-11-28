@@ -1,0 +1,8 @@
+/* Task: Use nested declarations to set button text color and hover state */
+button {
+	color: #FF0000;
+
+	&:hover {
+		color: #00FF00;
+	}
+}

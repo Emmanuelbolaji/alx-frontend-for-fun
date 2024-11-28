@@ -1,0 +1,33 @@
+/* Sort a list of strings in alphabetical order */
+@use "sass:list";
+@use "sass:meta";
+
+$list_to_sort: john anna zoe kim felicia carrie;
+
+@function quick-sort($list) {
+	$length: length($list);
+
+	@if $length <= 1 {
+		@return $list;
+	}
+
+	$pivot: nth($list, 1);
+	$less: ();
+	$equal: ();
+	$greater: ();
+
+	@each $item in $list {
+		@if $item < $pivot {
+			$less: append($less, $item);
+		} @else if $item == $pivot {
+			$equal: append($equal, $item);
+		} @else {
+			$greater: append($greater, $item);
+		}
+	}
+	@return join(join(quick-sort($less), $equal), quick-sort($greater));
+}
+
+$sorted_list: quick-sort($list_to_sort);
+
+@debug $sorted_list;
